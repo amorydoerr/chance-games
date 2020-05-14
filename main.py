@@ -1,5 +1,6 @@
 from options import validate_game_input, validate_bet_input, validate_argument_input, start_game, end_game, restart_game, bar_line, game_options
 from os import system
+import sys
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
         valid_input, restart = restart_game()
     if restart:
         main()
-    exit()
+    sys.exit()
 
 
 if __name__ == "__main__":
