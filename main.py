@@ -1,9 +1,13 @@
-from options import validate_game_input, validate_bet_input, validate_argument_input, start_game, end_game, restart_game, bar_line, game_options
-from os import system
+""" Main game driver """
 import sys
+from os import system
+from options import validate_game_input, validate_argument_input, start_game
+from options import end_game, restart_game, bar_line, game_options
+
 
 
 def main():
+    """ Runs game functions """
     system("cls")
     playing = True
     money = 100
