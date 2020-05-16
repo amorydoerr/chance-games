@@ -1,3 +1,5 @@
+""" Contains functions to simulate games. """
+
 import random
 
 
@@ -20,7 +22,7 @@ def perform_loss(bet: int) -> int:
 def perform_tie() -> int:
     """ Prints tie message and returns 0. """
 
-    print(f"You tied.")
+    print("You tied.")
     return 0
 
 
@@ -42,8 +44,7 @@ def coin_flip(bet: int, guess: str) -> int:
     print(f"The coin landed on: {flip}")
     if flip == guess:
         return perform_win(bet)
-    else:
-        return perform_loss(bet)
+    return perform_loss(bet)
 
 
 def cho_han(bet: int, guess: str) -> int:
@@ -64,8 +65,7 @@ def cho_han(bet: int, guess: str) -> int:
     print(f"The roll was: {roll}")
     if guess == "odd" and roll % 2 == 1 or guess == "even" and roll % 2 == 0:
         return perform_win(bet)
-    else:
-        return perform_loss(bet)
+    return perform_loss(bet)
 
 
 def war(bet: int) -> int:
@@ -95,10 +95,9 @@ def war(bet: int) -> int:
     print(f"Cpu drew: {deck_conversions.get(draw_cpu, draw_cpu)}")
     if draw_player > draw_cpu:
         return perform_win(bet)
-    elif draw_player < draw_cpu:
+    if draw_player < draw_cpu:
         return perform_loss(bet)
-    else:
-        return perform_tie()
+    return perform_tie()
 
 
 def roulette(bet: int, choice: str) -> int:
@@ -121,6 +120,7 @@ def roulette(bet: int, choice: str) -> int:
     black = (2, 4, 6, 8, 10, 11,
              13, 15, 17, 20, 22, 24,
              26, 28, 29, 31, 33, 35)
+    special = {-1: '00'}
     # convert str choices to appropriate int values
     if choice == "00":
         choice = -1
@@ -129,9 +129,10 @@ def roulette(bet: int, choice: str) -> int:
     roll = random.choice(range(-1, 37))  # roll one of 38 integers
     print(f"The roulette rolled: {special.get(roll, roll)}")
     # 0 and 00 not included in odd or even options
-    if roll > 0 and type(choice) is str:
-        if choice == "even" and roll % 2 == 0 or choice == "odd" and roll % 2 == 1 or choice == "black" and roll in black or choice == "red" and roll in red:
+    if roll > 0 and isinstance(choice, str):
+        if (choice == "even" and roll % 2 == 0 or choice == "odd" and roll % 2 == 1
+        or choice == "black" and roll in black or choice == "red" and roll in red):
             return perform_win(bet / 2)  # payout 1:1
-    else if choice == roll:
+    elif choice == roll:
         return perform_win(bet * 35/2)  # payout 35:1
     return perform_loss(bet)
