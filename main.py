@@ -1,8 +1,9 @@
-""" Main game driver """
+""" Main game driver. """
+
 import sys
 from os import system
 from options import validate_game_input, validate_argument_input, start_game
-from options import end_game, restart_game, bar_line, game_options
+from options import end_game, restart_game, BAR_LINE, GAME_OPTIONS
 
 
 
@@ -24,10 +25,10 @@ def main():
         while not valid_input:
             valid_input, game_argument = validate_argument_input(player_choice)
         if game_argument is not None:
-            money += game_options[player_choice](player_bet, game_argument)
+            money += GAME_OPTIONS[player_choice](player_bet, game_argument)
         else:
-            money += game_options[player_choice](player_bet)
-        print(bar_line)
+            money += GAME_OPTIONS[player_choice](player_bet)
+        print(BAR_LINE)
     end_game(money)
     valid_input = False
     while not valid_input:
