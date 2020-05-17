@@ -34,7 +34,7 @@ def main():
         valid_input, restart = restart_game()
     if restart:
         main()
-    else:
+    else:  # Prevent unnecesary command line clears
         system("cls")
 
 

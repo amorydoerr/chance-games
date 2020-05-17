@@ -21,14 +21,13 @@ R. Rules
 Q. Quit
 """
 # printable ruleset for games
-RULES = """
-Coin Flip: Choose heads or tails
+RULES = """Coin Flip: Choose heads or tails
 Chō-han: Guess if a dice roll will be odd or even
 War: Draw a card with the cpu, higher card wins
-Roulette: Choose black, red to double your bet or 0/00 to multiply by 35
-"""
+Roulette: Choose black, red to double your bet or 0/00 to multiply by 35"""
 # dashed divider to aid visibility
 BAR_LINE = "-------------------------"
+
 
 class MoneyError(Exception):
     """ Custom exception for validate_bet_input(). """
@@ -59,6 +58,7 @@ def validate_game_input(money: int) -> Tuple[bool, bool, int, int]:
         if player_choice == 'R':
             system("cls")
             print(RULES)
+            print(BAR_LINE)
             return False, True, None, None
         if player_choice == 'Q':
             system("cls")
@@ -176,7 +176,7 @@ def start_game() -> None:
     system("cls")
 
 
-def end_game(money) -> None:
+def end_game(money: int) -> None:
     """ Prints amount of money remaining at end of game. """
 
     if money > 0:
@@ -185,6 +185,7 @@ def end_game(money) -> None:
     else:
         print("You lost it all!")
         print("Better luck next time...")
+
 
 def restart_game() -> Tuple[bool, bool]:
     """ Validates player input to determine whether to restart or exit.
