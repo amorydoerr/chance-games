@@ -131,7 +131,7 @@ def roulette(bet: int, choice: str) -> int:
     # 0 and 00 not included in odd or even options
     if roll > 0 and isinstance(choice, str):
         if (choice == "even" and roll % 2 == 0 or choice == "odd" and roll % 2 == 1
-        or choice == "black" and roll in black or choice == "red" and roll in red):
+                or choice == "black" and roll in black or choice == "red" and roll in red):
             return perform_win(bet / 2)  # payout 1:1
     elif choice == roll:
         return perform_win(bet * 35/2)  # payout 35:1

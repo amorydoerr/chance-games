@@ -1,14 +1,13 @@
 """ Main game driver. """
 
-import sys
 from os import system
 from options import validate_game_input, validate_argument_input, start_game
 from options import end_game, restart_game, BAR_LINE, GAME_OPTIONS
 
 
-
 def main():
     """ Runs game functions """
+
     system("cls")
     playing = True
     money = 100
@@ -35,7 +34,8 @@ def main():
         valid_input, restart = restart_game()
     if restart:
         main()
-    sys.exit()
+    else:
+        system("cls")
 
 
 if __name__ == "__main__":
